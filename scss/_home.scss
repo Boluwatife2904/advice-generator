@@ -1,0 +1,64 @@
+.advice {
+	background-color: $dark-grayish-blue;
+	border-radius: 1.4rem;
+	padding: 4rem 2.5rem 6rem;
+	width: 95%;
+	max-width: 56rem;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	box-shadow: 0.2rem 1rem 4rem rgba($dark-blue, 0.8);
+    animation-name: slideInFromTop;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+
+	@media screen and (min-width: 600px) {
+		padding: 4rem 4rem 6rem;
+	}
+
+	&__number {
+		display: inline-block;
+		font-size: 1.3rem;
+		font-weight: 600;
+		color: $neon-green;
+		margin-bottom: 2rem;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+	}
+
+	&__text {
+		color: $light-cyan;
+		font-size: 2.4rem;
+		font-weight: 800;
+		line-height: 1.35;
+		margin-bottom: 3rem;
+
+		@media screen and (min-width: 600px) {
+			font-size: 2.8rem;
+		}
+	}
+
+	&__changer {
+		background-color: $neon-green;
+		height: 6rem;
+		width: 6rem;
+		border-radius: 50%;
+		cursor: pointer;
+		border: none;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: -3rem;
+		transition: all 0.2s ease;
+
+		&:hover {
+			transform: translateX(-50%) translateY(-3px);
+			box-shadow: 0.2rem 0.2rem 2.5rem rgba($neon-green, 0.8);
+		}
+
+		&:active {
+			transform: translateX(-50%) translateY(-1px);
+			box-shadow: 0.1rem 0.1rem 1rem rgba($neon-green, 0.8);
+		}
+	}
+}

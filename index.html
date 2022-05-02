@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+		<title>Frontend Mentor | Advice generator app</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="https://unpkg.com/vue@3"></script>
+	</head>
+	<body class="flex-center">
+		<main id="app">
+			<section class="advice">
+				<span class="advice__number">Advice #{{ adviceNumber }}</span>
+				<p class="advice__text">"{{ adviceText }}"</p>
+				<div class="advice__divider">
+					<svg width="295" height="16" xmlns="http://www.w3.org/2000/svg">
+						<g fill="none" fill-rule="evenodd">
+							<path fill="#4F5D74" d="M0 8h122v1H0zM173 8h122v1H173z" />
+							<g transform="translate(138)" fill="#CEE3E9">
+								<rect width="6" height="16" rx="3" />
+								<rect x="14" width="6" height="16" rx="3" />
+							</g>
+						</g>
+					</svg>
+				</div>
+				<button class="advice__changer flex-center" @click="fetchAdvice">
+					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" fill="#202733" /></svg>
+				</button>
+			</section>
+		</main>
+
+		<script>
+			Vue.createApp({
+				data() {
+					return {
+						adviceNumber: "117",
+						adviceText: "It is easy to sit up and take notice, what's difficult is getting up and taking action",
+					};
+				},
+				methods: {
+					async fetchAdvice() {
+						const adviceData = await fetch(`https://api.adviceslip.com/advice?t=${Math.random()}`);
+						const adviceDataResponse = await adviceData.json();
+						this.adviceNumber = adviceDataResponse.slip.id;
+						this.adviceText = adviceDataResponse.slip.advice;
+					},
+				},
+			}).mount("#app");
+		</script>
+	</body>
+</html>
