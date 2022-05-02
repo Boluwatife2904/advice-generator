@@ -69,6 +69,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   border: none;
+  outline: none;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
